@@ -6,14 +6,15 @@
   "license": "GPL-3.0-or-later",
   "repository": "@multiversx/mx-template-dapp",
   "dependencies": {
-    "@multiversx/sdk-dapp": "2.2.9",
-    "@multiversx/sdk-core": "11.2.0",
-    "@multiversx/sdk-network-providers": "1.2.1",
     "@fortawesome/fontawesome-svg-core": "6.1.0",
     "@fortawesome/free-solid-svg-icons": "6.1.0",
     "@fortawesome/react-fontawesome": "0.1.18",
+    "@multiversx/sdk-core": "11.2.0",
+    "@multiversx/sdk-dapp": "2.2.9",
+    "@multiversx/sdk-network-providers": "1.2.1",
     "axios": "0.24.0",
     "bootstrap": "4.6.2",
+    "dotenv": "^16.0.3",
     "moment": "2.29.1",
     "react": "18.2.0",
     "react-bootstrap": "2.1.2",
@@ -22,7 +23,7 @@
     "web-vitals": "1.0.1"
   },
   "scripts": {
-    "start": "HTTPS=true PORT=3001 react-scripts start",
+    "start": "GENERATE_SOURCEMAP=false && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -39,6 +40,15 @@
     "not dead",
     "not op_mini all"
   ],
+  "browser": {
+    "crypto": false,
+    "fs": false,
+    "path": false,
+    "os": false,
+    "net": false,
+    "stream": false,
+    "tls": false
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.1",
     "@testing-library/react": "12.1.2",

@@ -10,6 +10,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
+    "project": "./tsconfig.json"
   },
   "settings": {
     "import/parsers": {
@@ -38,40 +39,16 @@
   ],
   "plugins": ["react", "prettier", "import"],
   "rules": {
-    "import/order": [
-      "warn",
-      {
-        "groups": ["builtin", "external", "internal"],
-        "pathGroups": [
-          {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["react"],
-        "newlines-between": "ignore",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "lf"
-      }
-    ],
+    "prettier/prettier": 0,
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/prop-types": "off",
     "react/display-name": "off",
     "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
+    "quotes": "off",
     "semi": ["error", "always"],
     "object-curly-newline": "off",
     "arrow-body-style": "off",
