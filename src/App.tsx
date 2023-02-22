@@ -10,6 +10,7 @@ import {
     AxiosInterceptorContext // using this is optional
 } from "@multiversx/sdk-dapp/wrappers";
 
+import { QueryClient, QueryClientProvider } from 'react-query';
 import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import {Layout} from "components";
 import {
@@ -17,12 +18,22 @@ import {
     walletConnectV2ProjectId,
     sampleAuthenticatedDomains
 } from "config";
-import {PageNotFound, Unlock} from "pages";
+import { PageNotFound, Unlock } from "pages";
+import Shop from './pages/Shop';
 import {routeNames} from "routes";
-import {routes} from "routes";
+import { routes } from "routes";
+
+const client = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false
+        }
+    }
+});
 
 export const App = () => {
     return (
+        <QueryClientProvider client={client}>
         <AxiosInterceptorContext.Provider>
             <AxiosInterceptorContext.Interceptor
                 authenticatedDomanis={sampleAuthenticatedDomains}
@@ -56,6 +67,7 @@ export const App = () => {
                     </DappProvider>
                 </Router>
             </AxiosInterceptorContext.Interceptor>
-        </AxiosInterceptorContext.Provider>
+            </AxiosInterceptorContext.Provider>
+        </QueryClientProvider>
     );
 };

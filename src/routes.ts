@@ -3,12 +3,14 @@ import { dAppName } from 'config';
 import { withPageTitle } from './components/PageTitle';
 
 import { Dashboard, Home, Statistics } from './pages';
+import Shop from './pages/Shop';
 
 export const routeNames = {
   home: '/',
   dashboard: '/dashboard',
   statistics: '/statistics',
-  unlock: '/unlock'
+  unlock: '/unlock',
+  shop: '/shop'
 };
 
 interface RouteWithTitleType extends RouteType {
@@ -32,7 +34,12 @@ export const routes: RouteWithTitleType[] = [
     title: 'Dashboard',
     component: Dashboard,
     authenticatedRoute: true
-  }
+    },
+    {
+        path: routeNames.shop,
+        title: 'Shop',
+        component: Shop
+    }
 ];
 
 export const mappedRoutes = routes.map((route) => {

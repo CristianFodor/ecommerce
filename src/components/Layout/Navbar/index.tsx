@@ -26,6 +26,13 @@ export const Navbar = () => {
           <MultiversXLogo className='multiversx-logo' />
           <span className='dapp-name text-muted'>{dAppName}</span>
         </Link>
+              <Link
+                  to={routeNames.shop}
+                  className='dapp-name text-muted'
+                  data-testid='shop'
+              >
+                  Shop
+              </Link> 
 
         <Nav className='ml-auto'>
           {isLoggedIn && (
