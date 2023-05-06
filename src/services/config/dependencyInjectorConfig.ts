@@ -2,6 +2,8 @@ import {DependencyInjector, HookTuple, InjectionToken, makeInjector, Token, useI
 import UsersService from "../UsersService";
 import AuthService from "../AuthService";
 import {ecommerceApi, mvxApi} from "../../config";
+import ProductsService from "../ProductsService";
+import UtilsService from "../UtilsService";
 export const ECOMMERCE_API = new InjectionToken<string>("Ecommerce API");
 export const MVX_API = new InjectionToken<string>("MultiversX API");
 
@@ -17,6 +19,16 @@ export const injector: DependencyInjector = makeInjector([
     provide: AuthService,
     useClass: AuthService,
     deps: [ECOMMERCE_API],
+  },
+  {
+    provide: ProductsService,
+    useClass: ProductsService,
+    deps: [ECOMMERCE_API],
+  },
+  {
+    provide: UtilsService,
+    useClass: UtilsService,
+    deps: [],
   },
 ]);
 

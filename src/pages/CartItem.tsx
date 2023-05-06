@@ -1,15 +1,15 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
 // Types
-import { CartItemType } from './Shop/Shop';
-// Styles
-import { Wrapper } from '../pages/CartItem.styles';
+import {Wrapper} from '../pages/CartItem.styles';
+import {Product} from "../entities/ProductEntity";
+import {CartItemType} from "./Shop";
 
 type Props = {
     item: CartItemType;
-    addToCart: (clickedItem: CartItemType) => void;
-    removeFromCart: (id: number) => void;
-    buyItems: CartItemType[];
+    addToCart: (clickedItem: CartItemType | Product) => void;
+    removeFromCart: (id: string) => void;
+    buyItems: Product[];
 };
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
@@ -25,7 +25,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
                     size='small'
                     disableElevation
                     variant='contained'
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(item._id)}
                 >
                     -
                 </Button>

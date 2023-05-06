@@ -11,7 +11,7 @@ export class UsersService extends BaseService {
   }
 
   public async checkUser(publicAddress: string): Promise<User> {
-    return this.doCall(() => axios.post<User>(`${this._api}/user`, { publicAddress }));
+    return this.doCall(() => axios.post<User>(`${this._api}/api/user`, { publicAddress }));
   }
 }
 

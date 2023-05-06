@@ -16,6 +16,7 @@ const initialState = (): ContextState => {
 
 export const initUserSettings: User = {
   id: "",
+  _id: "",
   publicAddress: "",
   username: "",
   roles: "",

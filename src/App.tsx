@@ -1,26 +1,14 @@
 import React from "react";
 import {EnvironmentsEnum} from "@multiversx/sdk-dapp/types";
-import {
-    TransactionsToastList,
-    SignTransactionsModals,
-    NotificationModal
-} from "@multiversx/sdk-dapp/UI";
-import {
-    DappProvider,
-    AxiosInterceptorContext // using this is optional
-} from "@multiversx/sdk-dapp/wrappers";
+import {NotificationModal, SignTransactionsModals, TransactionsToastList} from "@multiversx/sdk-dapp/UI";
+import {DappProvider} from "@multiversx/sdk-dapp/wrappers";
 
 import {QueryClient, QueryClientProvider} from 'react-query';
-import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import {Layout} from "components";
-import {
-    apiTimeout,
-    walletConnectV2ProjectId,
-    sampleAuthenticatedDomains
-} from "config";
+import {apiTimeout, walletConnectV2ProjectId} from "config";
 import {PageNotFound, Unlock} from "pages";
-import {routeNames} from "routes";
-import {routes} from "routes";
+import {routeNames, routes} from "routes";
 
 const client = new QueryClient({
     defaultOptions: {
@@ -43,7 +31,6 @@ export const App = () => {
                     }}
                 >
                     <Layout>
-                        <AxiosInterceptorContext.Listener/>
                         <TransactionsToastList/>
                         <NotificationModal/>
                         <SignTransactionsModals className="custom-class-for-modals"/>

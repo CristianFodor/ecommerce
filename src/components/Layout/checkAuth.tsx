@@ -11,6 +11,7 @@ import {useContext, useDispatch} from "../../context";
 import {User} from "../../services/UserType";
 import LocalStorageService from "../../services/localStorageService/LocalStorageService";
 import {LocalStorageKeys} from "../../services/localStorageService/LocalStorageKeys";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 function isAuthenticatedRoute(pathname: string): boolean {
     const mappedRoute = mappedRoutes.find((route) => {
@@ -59,7 +60,7 @@ const CheckAuth: FC<React.PropsWithChildren<unknown>> = ({children}) => {
                 getUser = await userService.checkUser(address);
             }
 
-            if (jwtTokenInfo && getUser && getUser.id) {
+            if (jwtTokenInfo && getUser && (getUser.id || getUser._id)) {
                 setIsUserAuthAndReady(true);
                 dispatch({
                     type: "setAuthenticationData",
@@ -92,10 +93,10 @@ const CheckAuth: FC<React.PropsWithChildren<unknown>> = ({children}) => {
     }, []);
 
     if (isAuthenticatedRoute(pathname) && !isUserAuthAndReady) {
-        return <></>;
+        return <LinearProgress/>;
     }
 
-    return <Suspense fallback={<></>}>{children}</Suspense>;
+    return <Suspense fallback={<LinearProgress/>}>{children}</Suspense>;
 };
 
 export default CheckAuth;

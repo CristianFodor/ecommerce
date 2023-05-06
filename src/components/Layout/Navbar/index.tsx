@@ -1,77 +1,69 @@
 import React from 'react';
 import {useGetIsLoggedIn} from '@multiversx/sdk-dapp/hooks';
 import {logout} from '@multiversx/sdk-dapp/utils';
-import {faChartSimple} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {Navbar as BsNavbar, NavItem, Nav} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import {routeNames} from 'routes';
+import {Nav} from 'react-bootstrap';
+import {useService} from "../../../services/config/dependencyInjectorConfig";
+import AuthService from "../../../services/AuthService";
+import {useContext} from "../../../context";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import {Link} from "react-router-dom";
+import {routeNames} from "../../../routes";
 
-export const Navbar = () => {
+export const NavbarComponent = () => {
     const isLoggedIn = useGetIsLoggedIn();
-
+    const [authService] = useService(AuthService);
+    const { userSettings } = useContext();
     const handleLogout = () => {
         logout(`${window.location.origin}/`);
     };
 
     return (
-        <BsNavbar className='bg-white border-bottom px-4 py-3'>
-            <div className='container-fluid'>
-                <Link
-                    to={isLoggedIn ? routeNames.dashboard : routeNames.home}
-                >
-                </Link>
-                <button className='btn btn-link'>
-                <Link
-                    to={routeNames.shop}
-                    data-testid='shop'
-                >
-                    Shop
-                </Link>
-                </button>
+        <Navbar bg="light" expand="lg">
+            <Container>
+                <Navbar.Brand href="/">Ecommerce</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link>
+                             <Link to={routeNames.shop} data-testid='shop'>Home</Link>
+                        </Nav.Link>
+                        {isLoggedIn && !authService.isAdmin(userSettings) &&
+                            <Nav.Link>
+                                <Link to={routeNames.userOrders} data-testid='userOrders'>My Orders</Link>
+                            </Nav.Link>
+                        }
+                    </Nav>
+                </Navbar.Collapse>
+                <Navbar.Collapse className="justify-content-end">
+                     {isLoggedIn && authService.isAdmin(userSettings) &&
 
-                <Nav className='ml-auto'>
-                    <NavItem>
-                        <button className='btn btn-link'>
-                            <Link
-                                to={routeNames.unlock}
-                                data-testid='unlock'
-                            >
-                                Sign Up
-                            </Link>
-                        </button>
-                    </NavItem>
-                    <NavItem>
-                        <button className='btn btn-link'>
-                            <Link
-                                to={routeNames.unlock}
-                                data-testid='unlock'
-                            >
-                                Login
-                            </Link>
-                        </button>
-                    </NavItem>
-                    {isLoggedIn && (
-                        <>
-                            <NavItem>
-                                <Link to={routeNames.statistics} className='nav-link'>
-                                    <FontAwesomeIcon
-                                        icon={faChartSimple}
-                                        className='text-muted'
-                                    />
-                                </Link>
-                            </NavItem>
+                         <NavDropdown title="Admin" id="basic-nav-dropdown">
+                             <NavDropdown.Item>
+                                 <Link to={routeNames.productList} data-testid='productList'>Products</Link>
 
-                            <NavItem>
-                                <button className='btn btn-link' onClick={handleLogout}>
-                                        Close
-                                </button>
-                            </NavItem>
-
-                        </>
-                    )}
-                </Nav>
-            </div>
-        </BsNavbar>
+                             </NavDropdown.Item>
+                             <NavDropdown.Item>
+                                 <Link to={routeNames.orderList} data-testid='orderList'>Orders</Link>
+                             </NavDropdown.Item>
+                         </NavDropdown>
+                     }
+                    
+                    {!isLoggedIn &&
+                        <Nav.Link>
+                            <Link to={routeNames.unlock} data-testid='shop'>Login</Link>
+                        </Nav.Link>
+                    }
+                    {isLoggedIn &&
+                        <Nav.Link>
+                            <button className='btn btn-link' onClick={handleLogout}>
+                                Close
+                            </button>
+                        </Nav.Link>
+                    }
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 };

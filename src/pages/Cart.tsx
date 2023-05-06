@@ -1,28 +1,23 @@
-import { useGetSignedTransactions, useTrackTransactionStatus } from "@multiversx/sdk-dapp/hooks";
+import {useGetLoginInfo} from "@multiversx/sdk-dapp/hooks";
 import CartItem from '../pages/CartItem';
 import Button from '@material-ui/core/Button';
-import { Wrapper } from '../pages/Cart.styles';
-import { CartItemType } from './Shop/Shop';
-import { Link, useNavigate } from 'react-router-dom';
+import {Wrapper} from '../pages/Cart.styles';
+import {CartItemType} from './Shop/Shop';
+import {useNavigate} from 'react-router-dom';
 import React from 'react';
-import { contractAddress } from 'config';
-import { refreshAccount } from '@multiversx/sdk-dapp/utils';
-import { routeNames } from 'routes';
-import { sendTransactions } from '@multiversx/sdk-dapp/services';
-import { useEffect, useState } from 'react';
-import { useGetSuccessfulTransactions } from '@multiversx/sdk-dapp/hooks/transactions/useGetSuccessfulTransactions';
-import { useGetPendingTransactions } from '@multiversx/sdk-dapp/hooks/transactions/useGetPendingTransactions';
-import { useGetLoginInfo } from '@multiversx/sdk-dapp/hooks';
+import {contractAddress} from 'config';
+import {refreshAccount} from '@multiversx/sdk-dapp/utils';
+import {sendTransactions} from '@multiversx/sdk-dapp/services';
 import LocalStorageService from '../services/localStorageService/LocalStorageService';
-import { LocalStorageKeys } from '../services/localStorageService/LocalStorageKeys';
+import {LocalStorageKeys} from '../services/localStorageService/LocalStorageKeys';
+import {Product} from "../entities/ProductEntity";
 
 
 type Props = {
     cartItems: CartItemType[];
-    addToCart: (clickedItem: CartItemType) => void;
-    removeFromCart: (id: number) => void;
-    buyItems: CartItemType[];
- 
+    addToCart: (clickedItem: CartItemType | Product) => void;
+    removeFromCart: (id: string) => void;
+    buyItems: Product[];
 };
 
 export const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
@@ -86,12 +81,11 @@ export const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) 
             {cartItems.length === 0 ? <p>No items in cart.</p> : null}
             {cartItems.map(item => (
                 <CartItem
-                    key={item.id}
+                    key={item._id}
                     item={item}
                     addToCart={addToCart}
                     removeFromCart={removeFromCart}
                     buyItems={[]}
-
                 />
             ))}
             <h2>Total: $ {calculateTotal(cartItems).toFixed(2)}</h2>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AxiosResponse } from "axios";
 import { SessionStorageKeys } from "./sessionStorageService/sessionStorageKeys";
 import SessionStorageService from "./sessionStorageService/SessionStorageService";
