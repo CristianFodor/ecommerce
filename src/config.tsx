@@ -1,5 +1,5 @@
 export const contractAddress =
-  'erd1qqqqqqqqqqqqqpgq72l6vl07fkn3alyfq753mcy4nakm0l72396qkcud5x';
+  'erd1pmrrpdkgrsgdazpr983svxzg5ln74xr9c07sux5w3m63epvdzp7semt35j';
 
 export const dAppName = 'example Dapp';
 
@@ -12,4 +12,6 @@ export const TOOLS_API_URL = 'https://tools.multiversx.com';
 /**
  * Calls to these domains will use `nativeAuth` Baerer token
  */
-export const sampleAuthenticatedDomains = [TOOLS_API_URL];
+export const sampleAuthenticatedDomains = [TOOLS_API_URL, 'http://localhost:3000'];
+export const mvxApi = 'https://api.multiversx.com';
+export const ecommerceApi = 'https://localhost:5001';

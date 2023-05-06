@@ -8,6 +8,15 @@ export const Wrapper = styled.div`
 export const StyledButton = styled(IconButton)`
     postion: fixed;
     z-index: 100;
-    right: 20px;
-    top: 20px;
+    margin:  10px 30px 20px 20px;
+`;
+export const CategoryButton = styled.div`
+  margin:  10px 30px 20px 120px;
+  display: inline-block;
+  border: 1px solid cadetblue;
+  background-color: white;
+  padding: 2px 4px;
+  font-size: 14px;
+  cursor: pointer;
+  position: center;
 `;

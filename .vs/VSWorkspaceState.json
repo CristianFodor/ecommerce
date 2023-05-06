@@ -1,12 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github",
-    "\\.github\\public",
-    "\\.github\\workflows",
     "\\src",
-    "\\src\\pages"
+    "\\src\\assets",
+    "\\src\\pages",
+    "\\src\\pages\\Dashboard",
+    "\\src\\pages\\Dashboard\\components",
+    "\\src\\pages\\Dashboard\\components\\Actions",
+    "\\src\\pages\\Dashboard\\components\\Actions\\helpers",
+    "\\src\\services",
+    "\\src\\services\\localStorageService"
   ],
-  "SelectedNode": "\\.github\\public\\index.html",
+  "SelectedNode": "\\src\\pages\\Dashboard\\components\\DashboardLayout.tsx",
   "PreviewInSolutionExplorer": false
 }
