@@ -9,5 +9,5 @@ export interface Product extends Document{
     price: number;
     quantity: number;
     category: string;
-    created: Date;
+    created: string;
 }

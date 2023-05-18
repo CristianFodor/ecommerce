@@ -6,9 +6,10 @@ export const Wrapper = styled.div`
     flex-direction: column;
     width: 100%;
     border: 1px solid lightblue;
-    border-radius: 20 px;
+    border-radius: 20px;
     height: 100%;
-    
+  
+   
     button {
         border-radius: 0 0 20px 20px;
     }
@@ -18,11 +19,15 @@ export const Wrapper = styled.div`
         object-fit: contain;
         border-radius: 20px 20px 0 0;
     }
+  h3{
+    text-align: center;
+    
+  }
 
     div{
         font-family: Arial, Halvetica, sans-serif;
         padding: 1rem;
-        height: 100;
+        height: 100%;
     }
 
 `;

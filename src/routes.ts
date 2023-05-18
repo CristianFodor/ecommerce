@@ -6,6 +6,8 @@ import {Dashboard, Home, Statistics, Shop} from './pages';
 import ProductsList from "./pages/Products/ProductsList";
 import UserOrderList from "./pages/Orders/UserOrderList";
 import AdminOrderList from "./pages/Orders/AdminOrderList";
+import CreateProduct from "./pages/Products/CreateProduct";
+import EditProduct from "./pages/Products/EditProduct";
 
 export const routeNames = {
     home: '/home',
@@ -15,7 +17,9 @@ export const routeNames = {
     productList: '/admin/products',
     orderList: '/admin/orders',
     userOrders: '/user/my-orders',
-    shop: '/'
+    shop: '/',
+    createProduct: '/admin/products/create',
+    editProduct: '/admin/products/edit/'
 };
 
 interface RouteWithTitleType extends RouteType {
@@ -62,6 +66,18 @@ export const routes: RouteWithTitleType[] = [
         path: routeNames.orderList,
         title: 'Admin Orders Lists',
         component: AdminOrderList,
+        authenticatedRoute: true
+    },
+    {
+        path: routeNames.createProduct,
+        title: 'Creat Product',
+        component: CreateProduct,
+        authenticatedRoute: true
+    },
+    {
+        path: routeNames.editProduct + ':productId',
+        title: 'Edit Product',
+        component: EditProduct,
         authenticatedRoute: true
     }
 ];

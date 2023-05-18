@@ -6,6 +6,9 @@
   "license": "GPL-3.0-or-later",
   "repository": "@multiversx/mx-template-dapp",
   "dependencies": {
+    "@chakra-ui/react": "^2.6.1",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "6.1.0",
     "@fortawesome/free-solid-svg-icons": "6.1.0",
     "@fortawesome/react-fontawesome": "0.1.18",
@@ -19,6 +22,7 @@
     "axios": "^0.24.0",
     "bootstrap": "^4.6.2",
     "dotenv": "^16.0.3",
+    "framer-motion": "^10.12.12",
     "moment": "2.29.1",
     "react": "18.2.0",
     "react-bootstrap": "^2.1.2",

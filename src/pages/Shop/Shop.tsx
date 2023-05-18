@@ -89,6 +89,7 @@ export const Shop = () => {
                     addToCart={handleAddToCart}
                     removeFromCart={handleRemoveFromCart}
                     buyItems={[]}
+                    emptyCart={onSuccessTx}
                 />
             </Drawer>
 			<div className="row">

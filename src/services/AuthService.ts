@@ -16,6 +16,9 @@ export class AuthService extends BaseService {
   public isAdmin(user: User): boolean {
     return this.checkUserRole("admin", user);
   }
+  public isUser(user: User): boolean {
+    return this.checkUserRole("user", user);
+  }
 }
 
 export default AuthService;

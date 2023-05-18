@@ -4,6 +4,7 @@ import AuthService from "../AuthService";
 import {ecommerceApi, mvxApi} from "../../config";
 import ProductsService from "../ProductsService";
 import UtilsService from "../UtilsService";
+import OrdersService from "../OrdersService";
 export const ECOMMERCE_API = new InjectionToken<string>("Ecommerce API");
 export const MVX_API = new InjectionToken<string>("MultiversX API");
 
@@ -29,6 +30,11 @@ export const injector: DependencyInjector = makeInjector([
     provide: UtilsService,
     useClass: UtilsService,
     deps: [],
+  },
+  {
+    provide: OrdersService,
+    useClass: OrdersService,
+    deps: [ECOMMERCE_API],
   },
 ]);
 
